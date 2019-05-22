@@ -18,15 +18,22 @@ int* inorderTraversal(struct TreeNode* root, int* returnSize){
 			if(index_re < len){
 				re[index_re++] = p->val;
 			}else{
-				re = realloc((void *)re, sizeof(int) * MAX);
+				re = realloc((void *)re, sizeof(int) * (MAX + len));
 				len += MAX;
 				re[index_re++] = p->val;
 			}
 			if(p->right){
 				p = p->right;
 			}else{
-				if(index_arr > 0){
+				if(index_arr > 0s){
 					p = arr[--index_arr];
+					if(index_re < len){
+						re[index_re++] = p->val;
+					}else{
+						re = realloc((void *)re, sizeof(int) * (MAX + len));
+						len += MAX;
+						re[index_re++] = p->val;
+					}
 				}else
 					p = NULL;
 			}
